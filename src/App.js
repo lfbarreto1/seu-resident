@@ -63,7 +63,7 @@ const SeuResidentLanding = () => {
                 Escolha Seu Plano
               </h1>
               <p className="text-xl text-gray-600">
-                Transforme sua residência com nosso planner baseado em IA
+                Transforme o processo de passar na residência
               </p>
             </div>
 
@@ -300,7 +300,7 @@ const SeuResidentLanding = () => {
             </h1>
 
             <p className="text-xl text-gray-600 mb-8 max-w-3xl mx-auto leading-relaxed">
-              PersonalizaçãoA gente te ajuda a manter o foco com um plano de estudos adaptado, feito sob medida pra sua rotina real – e cobramos você <strong>todo dia no WhatsApp.</strong>
+              A gente te ajuda a manter o foco com um plano de estudos adaptado, feito sob medida pra sua rotina real – e cobramos você <strong>todo dia no WhatsApp.</strong>
             </p>
 
             <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
@@ -308,7 +308,7 @@ const SeuResidentLanding = () => {
                   onClick={() => setCurrentPage('plans')}
                   className="bg-gradient-to-r from-[#359e93] to-emerald-600 text-white px-8 py-4 rounded-xl font-semibold text-lg hover:shadow-lg transform hover:scale-105 transition-all duration-300 flex items-center"
               >
-                Começar agora
+                Quero meu plano personalizado
                 <ChevronRight className="w-5 h-5 ml-2" />
               </button>
               <button className="border-2 border-[#359e93] text-[#359e93] px-8 py-4 rounded-xl font-semibold text-lg hover:bg-[#359e93] hover:text-white transition-all duration-300 flex items-center">
