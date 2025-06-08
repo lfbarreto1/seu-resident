@@ -25,11 +25,25 @@ const SeuResidentLanding = () => {
     });
   };
 
+
   const handleSubmit = (e) => {
-    e.preventDefault();
-    console.log('Form submitted:', formData);
-    alert('Dados enviados com sucesso! Entraremos em contato em breve.');
-  };
+  e.preventDefault();
+  
+  const mensagem = `Olá! Gostaria de conhecer mais sobre o Seu Residente 👋
+
+Dados do cadastro:
+Nome: ${formData.name}
+Email: ${formData.email}
+Telefone: ${formData.phone}
+Especialidade: ${formData.specialty}
+Ano de Residência: ${formData.residencyYear}
+Plano de interesse: ${formData.plan === 'monthly' ? 'Mensal' : 'Anual'}
+
+Aguardo mais informações! 😊`;
+
+  const whatsappLink = `https://wa.me/5511947165215?text=${encodeURIComponent(mensagem)}`;
+  window.open(whatsappLink, '_blank');
+};  
 
   const annualSavings = (39.00 * 12) - 708;
 
@@ -78,10 +92,6 @@ const SeuResidentLanding = () => {
                   </div>
                 </div>
                 <ul className="space-y-3 mb-8">
-                  <li className="flex items-center">
-                    <Check className="w-5 h-5 text-[#359e93] mr-3" />
-                    <span>Planner personalizado com IA</span>
-                  </li>
                   <li className="flex items-center">
                     <Check className="w-5 h-5 text-[#359e93] mr-3" />
                     <span>Priorização automática de estudos</span>
@@ -136,10 +146,6 @@ const SeuResidentLanding = () => {
                   <li className="flex items-center">
                     <Check className="w-5 h-5 text-[#359e93] mr-3" />
                     <span>Suporte prioritário</span>
-                  </li>
-                  <li className="flex items-center">
-                    <Check className="w-5 h-5 text-[#359e93] mr-3" />
-                    <span>Análises avançadas</span>
                   </li>
                   <li className="flex items-center">
                     <Check className="w-5 h-5 text-[#359e93] mr-3" />
@@ -218,7 +224,7 @@ const SeuResidentLanding = () => {
                         onChange={handleInputChange}
                         className="w-full px-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-[#359e93] focus:border-transparent transition-all"
                     >
-                      <option value="">Selecione sua especialidade</option>
+                      <option value="">Selecione sua especialidade de interesse</option>
                       <option value="clinica-medica">Clínica Médica</option>
                       <option value="cirurgia-geral">Cirurgia Geral</option>
                       <option value="pediatria">Pediatria</option>
@@ -242,12 +248,19 @@ const SeuResidentLanding = () => {
                       onChange={handleInputChange}
                       className="w-full px-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-[#359e93] focus:border-transparent transition-all"
                   >
-                    <option value="">Selecione o ano</option>
-                    <option value="R1">R1 - Primeiro ano</option>
-                    <option value="R2">R2 - Segundo ano</option>
-                    <option value="R3">R3 - Terceiro ano</option>
-                    <option value="R4">R4 - Quarto ano</option>
-                    <option value="R5">R5 - Quinto ano</option>
+                    <option value="">Selecione o perído</option>
+                    <option value="R1">Primeiro</option>
+                    <option value="R2">Segundo</option>
+                    <option value="R3">Terceiro</option>
+                    <option value="R4">Quarto</option>
+                    <option value="R5">Quinto</option>
+                    <option value="R6">Sexto</option>
+                    <option value="R6">Sétimo</option>
+                    <option value="R6">Oitavo</option>
+                    <option value="R6">Nono</option>
+                    <option value="R6">Décimo</option>
+                    <option value="R6">Décimo Primeiro</option>
+                    <option value="R6">Décimo Segundo</option>
                   </select>
                 </div>
 
@@ -255,7 +268,7 @@ const SeuResidentLanding = () => {
                     onClick={handleSubmit}
                     className="w-full bg-gradient-to-r from-[#359e93] to-emerald-600 text-white py-4 px-8 rounded-xl font-semibold text-lg hover:shadow-lg transform hover:scale-105 transition-all duration-300 flex items-center justify-center"
                 >
-                  Começar agora
+                  Tenho interesse
                   <ArrowRight className="w-5 h-5 ml-2" />
                 </button>
               </div>
@@ -280,7 +293,6 @@ const SeuResidentLanding = () => {
               <nav className="hidden md:flex space-x-8">
                 <a href="#features" className="text-gray-600 hover:text-[#359e93] transition-colors">Recursos</a>
                 <a href="#video" className="text-gray-600 hover:text-[#359e93] transition-colors">Demo</a>
-                <a href="#pricing" className="text-gray-600 hover:text-[#359e93] transition-colors">Preços</a>
               </nav>
             </div>
           </div>
@@ -311,7 +323,12 @@ const SeuResidentLanding = () => {
                 Quero meu plano personalizado
                 <ChevronRight className="w-5 h-5 ml-2" />
               </button>
-              <button className="border-2 border-[#359e93] text-[#359e93] px-8 py-4 rounded-xl font-semibold text-lg hover:bg-[#359e93] hover:text-white transition-all duration-300 flex items-center">
+              <button 
+               onClick={() => {
+              const section = document.getElementById('video')
+              section?.scrollIntoView({ behavior: 'smooth' })
+              }}
+              className="border-2 border-[#359e93] text-[#359e93] px-8 py-4 rounded-xl font-semibold text-lg hover:bg-[#359e93] hover:text-white transition-all duration-300 flex items-center">
                 <Play className="w-5 h-5 mr-2" />
                 Ver demonstração
               </button>
@@ -352,7 +369,7 @@ const SeuResidentLanding = () => {
                 Recursos que transformam sua residência
               </h2>
               <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-                Nossa IA foi treinada especificamente para entender os desafios únicos da residência médica
+                Criamos uma solução que acompanha sua rotina, se adapta às mudanças e te cobra quando mais precisa.
               </p>
             </div>
 
@@ -391,6 +408,7 @@ const SeuResidentLanding = () => {
         </section>
 
         {/* Video Section */}
+        {/* {/* Video Section */}
         <section id="video" className="py-20">
           <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="text-center mb-12">
@@ -398,21 +416,26 @@ const SeuResidentLanding = () => {
                 Veja como funciona na prática
               </h2>
               <p className="text-xl text-gray-600">
-                Demonstração completa do Seu Residente e como ele resolve os problemas reais da residência
+                Entenda a proposta do Seu Residente e como ele pode transformar sua rotina de estudos
               </p>
             </div>
 
             <div className="relative bg-gradient-to-r from-[#359e93] to-emerald-600 rounded-3xl p-2">
-              <div className="bg-gray-900 rounded-2xl aspect-video flex items-center justify-center">
-                <div className="text-center">
-                  <div className="w-20 h-20 bg-white/20 rounded-full flex items-center justify-center mx-auto mb-4 hover:bg-white/30 transition-colors cursor-pointer">
-                    <Play className="w-8 h-8 text-white ml-1" />
-                  </div>
-                  <p className="text-white text-lg font-medium">Vídeo em breve</p>
-                  <p className="text-white/80 text-sm">Estamos finalizando a gravação</p>
-                </div>
+              <div className="aspect-video rounded-2xl overflow-hidden">
+                <iframe
+                  className="w-full h-full"
+                  src="https://www.youtube.com/embed/c6fndgHB-YE"
+                  title="Demonstração Seu Residente"
+                  frameBorder="0"
+                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                  allowFullScreen
+                ></iframe>
               </div>
             </div>
+          </div>
+        </section>
+        <section id="video" className="py-20">
+          <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
           </div>
         </section>
 
@@ -420,16 +443,16 @@ const SeuResidentLanding = () => {
         <section className="bg-gradient-to-r from-[#359e93] to-emerald-600 py-20">
           <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
             <h2 className="text-4xl font-bold text-white mb-6">
-              Pronto para transformar sua residência?
+              Pronto para transformar sua rotina de estudos?
             </h2>
             <p className="text-xl text-emerald-100 mb-8 max-w-2xl mx-auto">
-              Junte-se aos residentes que já estão otimizando seus estudos com nossa IA
+              Escolha seu plano ideal e entre na lista de interessados para ser avisado assim que abrirmos as vagas. 
             </p>
             <button
                 onClick={() => setCurrentPage('plans')}
                 className="bg-white text-[#359e93] px-8 py-4 rounded-xl font-semibold text-lg hover:shadow-lg transform hover:scale-105 transition-all duration-300 inline-flex items-center"
             >
-              Começar gratuitamente
+              Quero fazer parte
               <ArrowRight className="w-5 h-5 ml-2" />
             </button>
           </div>
